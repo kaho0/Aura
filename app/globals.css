@@ -1,26 +1,206 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap');
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Text Colors */
+  --text-primary: #2E003E;       /* Midnight Purple for strong contrast */
+  --text-secondary: #9ca3af;     /* Subtle gray for body text */
+
+  /* Backgrounds */
+  --bg-light: #FDF6FF;           /* Soft Off-white */
+  --bg-gradient: linear-gradient(to bottom right, #FDF6FF, #C8A2C8, #FFD6A5);
+  --bg-dark: #1C1B2E;            /* Dark Lavender for dark mode */
+
+  /* Primary Theme Colors */
+  --color-primary: #C8A2C8;      /* Lavender */
+  --color-accent-1: #E0BBE4;     /* Mauve */
+  --color-accent-2: #FFD6A5;     /* Peach */
+  --color-accent-3: #A8E6CF;     /* Mint */
+
+  /* Card, Button, Glassmorphism */
+  --card-bg: rgba(255, 255, 255, 0.25);
+  --card-blur: blur(12px);
+  --card-border: rgba(255, 255, 255, 0.1);
+
+  /* Fonts */
+  --font-heading: 'Quicksand', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Light mode styles */
+body {
+  background: var(--bg-light);
+  color: var(--text-primary);
+  font-family: var(--font-body);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Apply gradient background to main page */
+.gradient-bg {
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: var(--bg-dark);
+    color: white;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: white;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Navigation specific styles */
+.nav-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(200, 162, 200, 0.3);
+}
+
+.dark .nav-container {
+  background-color: rgba(28, 27, 46, 0.8);
+  border-bottom: 1px solid rgba(200, 162, 200, 0.2);
+}
+
+.logo-text {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.dark .logo-text {
+  color: var(--color-primary);
+}
+
+.nav-link {
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--color-accent-1);
+}
+
+.nav-link.active {
+  color: var(--color-accent-1);
+  border-bottom: 2px solid var(--color-accent-1);
+}
+
+.dark .nav-link {
+  color: var(--color-primary);
+}
+
+.dark .nav-link:hover {
+  color: var(--color-accent-2);
+}
+
+.dark .nav-link.active {
+  color: var(--color-accent-2);
+  border-bottom: 2px solid var(--color-accent-2);
+}
+
+/* Custom component styles */
+@layer components {
+  .lavender-card {
+    @apply bg-white/30 backdrop-blur-md border border-purple-200 rounded-xl shadow-md p-6 transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .dark .lavender-card {
+    @apply bg-gray-800/50 border-purple-900/30;
+  }
+  
+  .lavender-button {
+    @apply px-6 py-3 rounded-full bg-gradient-to-r from-purple-400 to-purple-600 
+           text-white font-medium transition-all duration-300
+           hover:shadow-lg hover:shadow-purple-500/30 hover:scale-105;
+  }
+  
+  .lavender-input {
+    @apply bg-white/50 border border-purple-200 rounded-lg px-4 py-2 focus:outline-none 
+           focus:ring-2 focus:ring-purple-400 focus:border-transparent;
+  }
+  
+  .dark .lavender-input {
+    @apply bg-gray-800/50 border-purple-900/30 text-white;
+  }
+  
+  /* Flow-specific component styles */
+  .pose-card {
+    @apply lavender-card flex flex-col items-center;
+  }
+  
+  .pose-image {
+    @apply rounded-lg mb-4 w-full h-48 object-cover;
+  }
+  
+  .timer-container {
+    @apply flex flex-col items-center justify-center p-8 lavender-card;
+  }
+  
+  .timer-circle {
+    @apply w-64 h-64 rounded-full border-4 border-purple-400 flex items-center justify-center;
+  }
+  
+  .timer-text {
+    @apply text-5xl font-bold font-heading text-purple-800;
+  }
+  
+  .dark .timer-text {
+    @apply text-purple-300;
+  }
+  
+  .music-player {
+    @apply lavender-card flex flex-col p-4;
+  }
+  
+  .track-progress {
+    @apply h-2 bg-purple-200 rounded-full overflow-hidden my-4;
+  }
+  
+  .track-progress-bar {
+    @apply h-full bg-gradient-to-r from-purple-500 to-pink-400;
+  }
+  
+  .player-controls {
+    @apply flex items-center justify-center gap-6 text-purple-800;
+  }
+  
+  .dark .player-controls {
+    @apply text-purple-300;
+  }
+  
+  .control-button {
+    @apply p-2 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors;
+  }
+  
+  /* Breathing exercise animation */
+  .breathing-circle {
+    @apply w-40 h-40 rounded-full bg-gradient-to-r from-purple-400 to-pink-300 
+           flex items-center justify-center text-white font-bold mx-auto;
+    animation: breathe 8s infinite ease-in-out;
+  }
+  
+  @keyframes breathe {
+    0%, 100% {
+      transform: scale(0.8);
+      box-shadow: 0 0 0 rgba(224, 187, 228, 0);
+    }
+    50% {
+      transform: scale(1.2);
+      box-shadow: 0 0 30px rgba(224, 187, 228, 0.6);
+    }
+  }
 }
