@@ -42,7 +42,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#121212]">
-      <Navigation></Navigation>
+      <Navigation />
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-purple-900/20 blur-3xl animate-pulse" />
@@ -56,11 +56,11 @@ export default function Home() {
         <HeroSection />
         <FeaturesSection />
         <PricingSection />
-        <TestimonialSection></TestimonialSection>
+        <TestimonialSection />
       </main>
 
       {/* Footer */}
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 }

@@ -85,24 +85,27 @@ export default function SessionsPage() {
           {/* Background particles */}
           <div className="absolute inset-0 overflow-hidden">
             {[...Array(20)].map((_, i) => (
-              <motion.div
-                key={i}
-                className="absolute bg-white rounded-full"
-                style={{
-                  width: 2 + Math.random() * 4,
-                  height: 2 + Math.random() * 4,
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`
-                }}
-                animate={{
-                  opacity: [0.2, 0.5, 0.2],
-                  y: [0, -10, 0]
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 3 + Math.random() * 5
-                }}
-              />
+             <motion.div
+             key={i}
+             // Remove the className and move these styles into the style object
+             style={{
+               width: 2 + Math.random() * 4,
+               height: 2 + Math.random() * 4,
+               left: "...", // your existing value
+               top: "...", // your existing value
+               position: "absolute", // moved from className
+               backgroundColor: "white", // moved from className
+               borderRadius: "9999px" // equivalent to rounded-full
+             }}
+             animate={{
+               opacity: [0, 1, 0],
+               y: [0, -30, -60]
+             }}
+             transition={{
+               repeat: Infinity,
+               duration: 2
+             }}
+           />
             ))}
           </div>
           

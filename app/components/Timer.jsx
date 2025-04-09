@@ -3,17 +3,13 @@
 import { useState, useEffect } from 'react';
 import { Play, Pause, RotateCcw } from 'lucide-react';
 
-interface TimerProps {
-  defaultMinutes?: number;
-}
-
-export default function Timer({ defaultMinutes = 10 }: TimerProps) {
+export default function Timer({ defaultMinutes = 10 }) {
   const [timeLeft, setTimeLeft] = useState(defaultMinutes * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [selectedTime, setSelectedTime] = useState(defaultMinutes);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval;
 
     if (isRunning && timeLeft > 0) {
       interval = setInterval(() => {
@@ -41,7 +37,7 @@ export default function Timer({ defaultMinutes = 10 }: TimerProps) {
     setTimeLeft(selectedTime * 60);
   };
 
-  const handleTimeChange = (minutes: number) => {
+  const handleTimeChange = (minutes) => {
     setSelectedTime(minutes);
     setTimeLeft(minutes * 60);
     setIsRunning(false);

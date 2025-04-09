@@ -6,15 +6,11 @@ import Navigation from './components/Navigation';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-     <Navigation></Navigation>
+        <Navigation />
         <main className="pt-16">
           {children}
         </main>
