@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# Aura
+
+Live site: [aura-nu.vercel.app](https://aura-nu.vercel.app)
+
+**Aura** is a modern web application built with [Next.js](https://nextjs.org) using the App Router. It features fast performance, server-side rendering, and optimized font loading with `next/font` using [Geist](https://vercel.com/font).
+
+---
 
 ## Getting Started
 
-First, run the development server:
+Clone the repository and run the development server:
 
 ```bash
+git clone https://github.com/your-username/aura.git
+cd aura
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit `http://localhost:3000` in your browser.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Features
 
-## Learn More
+- ⚡ Built with Next.js App Router
+- 🎨 Custom font: Geist (via `next/font`)
+- 🚀 Deployed on Vercel
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Folder Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+/app         → Main application pages
+/public      → Static assets (images, icons)
+/styles      → Global styles (if any)
+/components  → Reusable UI components
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is deployed on [Vercel](https://vercel.com).  
+Every push to the main branch will trigger an automatic deployment.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To deploy manually:
+
+1. Connect your GitHub repo to Vercel.
+2. Set the framework to **Next.js**.
+3. Vercel handles the rest.
+
+---
+
+---
+
+**Made with Next.js & Geist by [Vercel](https://vercel.com).**
+"""
+
+# Save to a file
+readme_path = Path("/mnt/data/README.md")
+readme_path.write_text(readme_content.strip())
+
+readme_path.name  # return the filename only for user reference
